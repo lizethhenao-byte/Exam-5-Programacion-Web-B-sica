@@ -2,11 +2,10 @@ var app = angular.module("slotApp", []);
 
 app.controller("SlotController", function ($scope, $timeout) {
 
-    // Rutas de tus imágenes de símbolos
     const simbolos = [
-        "Imágenes/Símbolos/cereza.png",
-        "Imágenes/Símbolos/limon.png",
-        "Imágenes/Símbolos/sandia.png"
+        "img/cereza.png",
+        "img/limon.png",
+        "img/sandia.png"
     ];
 
     let vm = this;
@@ -31,7 +30,6 @@ app.controller("SlotController", function ($scope, $timeout) {
         vm.resultado = "Girando...";
         vm.colorResultado = "";
 
-        // Animación suave
         $timeout(function() {
 
             vm.carretes = vm.carretes.map(() => ({
@@ -43,7 +41,6 @@ app.controller("SlotController", function ($scope, $timeout) {
         }, 400);
     };
 
-    // Lógica del resultado
     function evaluar() {
         const a = vm.carretes[0].img;
         const b = vm.carretes[1].img;
