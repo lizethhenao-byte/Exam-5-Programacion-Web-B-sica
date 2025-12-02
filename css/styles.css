@@ -1,0 +1,66 @@
+body {
+    background: #00224e;
+    color: white;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    padding-top: 40px;
+}
+
+.slot-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    margin: 30px auto;
+}
+
+.slot {
+    width: 120px;
+    height: 120px;
+    background: #ffffff22;
+    border: 3px solid #ffaa00;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px #000;
+}
+
+.slot img {
+    width: 80px;
+    height: 80px;
+}
+
+.btn-play {
+    background: orange;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 12px;
+    font-size: 20px;
+    cursor: pointer;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.stats-table {
+    width: 300px;
+    margin: 0 auto;
+    background: #ffffff11;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.stats-table th, td {
+    padding: 8px;
+}
+
+.success {
+    color: #00ff88;
+}
+
+.warning {
+    color: #ffcc00;
+}
+
+.error {
+    color: #ff4444;
+}
