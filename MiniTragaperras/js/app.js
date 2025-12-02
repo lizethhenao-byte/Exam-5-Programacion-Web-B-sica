@@ -1,20 +1,17 @@
-var app = angular.module("tragamonedasApp", []);
+var app = angular.module("MiniTragaperrasApp", []);
 
-app.controller("tragamonedasCtrl", function($scope, $timeout) {
+app.controller("MiniTragaperrasCtrl", function($scope) {
 
-    // Símbolos
     $scope.simbolos = [
         "img/simbolos/cereza.jpg",
         "img/simbolos/limon.jpg",
         "img/simbolos/sandia.jpg"
     ];
 
-    // Carretes iniciales
     $scope.reel1 = $scope.simbolos[0];
     $scope.reel2 = $scope.simbolos[1];
     $scope.reel3 = $scope.simbolos[2];
 
-    // Contadores
     $scope.ganadas = 0;
     $scope.casi = 0;
     $scope.perdidas = 0;
@@ -22,8 +19,7 @@ app.controller("tragamonedasCtrl", function($scope, $timeout) {
     $scope.mensaje = "";
     $scope.colorMensaje = "white";
 
-    // Función girar
-    $scope.girar = function() {
+    $scope.girar = function () {
 
         let r1 = Math.floor(Math.random() * $scope.simbolos.length);
         let r2 = Math.floor(Math.random() * $scope.simbolos.length);
