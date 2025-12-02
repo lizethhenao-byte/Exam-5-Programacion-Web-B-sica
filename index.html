@@ -2,17 +2,19 @@
 <html lang="es" ng-app="slotApp">
 <head>
     <meta charset="UTF-8">
-    <title>Mini Tragaperras</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <title>Mini TragaPerras</title>
+
+    <link rel="stylesheet" href="css/estilos.css">
+
     <script src="js/angular.min.js"></script>
     <script src="js/app.js"></script>
 </head>
 
 <body ng-controller="SlotController as s">
     
-    <h1>🎰 Mini Tragaperras</h1>
+    <h1>🎰 Mini TragaPerras</h1>
 
-    <!-- Tablero -->
+    <!-- Carretes -->
     <div class="slot-container">
         <div class="slot" ng-repeat="carrete in s.carretes">
             <img ng-src="{{carrete.img}}">
@@ -36,3 +38,4 @@
 
 </body>
 </html>
+
