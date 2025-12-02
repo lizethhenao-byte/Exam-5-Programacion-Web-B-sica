@@ -14,33 +14,35 @@
     <script src="js/app.js"></script>
 </head>
 
-<body ng-controller="SlotController as s">
+<body ng-controller="SlotController">
 
     <h1 class="encabezado">🎰 Mini Tragamonedas</h1>
 
     <!-- TABLERO -->
     <div class="slot-container">
-        <div class="slot" ng-repeat="carrete in s.carretes">
+        <div class="slot" ng-repeat="carrete in carretes">
             <img ng-src="{{carrete.img}}" class="simbolo">
         </div>
     </div>
 
-    <!-- BOTÓN DE GIRAR COMO IMAGEN -->
+    <!-- BOTÓN DE GIRAR -->
     <div class="boton-giro">
         <img src="img/iconos/boton.png"
              alt="Girar"
              class="btn-play-img"
-             ng-click="s.girar()">
+             ng-click="girar()">
     </div>
 
     <!-- RESULTADO -->
-    <h2 ng-class="s.colorResultado" class="resultado">{{s.resultado}}</h2>
+    <h2 ng-class="colorResultado" class="resultado">
+        {{resultado}}
+    </h2>
 
     <!-- ESTADÍSTICAS -->
     <table class="stats-table">
-        <tr><th>Ganadas (3 iguales)</th><td>{{s.stats.ganadas}}</td></tr>
-        <tr><th>Casi (2 iguales)</th><td>{{s.stats.casi}}</td></tr>
-        <tr><th>Perdidas</th><td>{{s.stats.perdidas}}</td></tr>
+        <tr><th>Ganadas (3 iguales)</th><td>{{stats.ganadas}}</td></tr>
+        <tr><th>Casi (2 iguales)</th><td>{{stats.casi}}</td></tr>
+        <tr><th>Perdidas</th><td>{{stats.perdidas}}</td></tr>
     </table>
 
 </body>
