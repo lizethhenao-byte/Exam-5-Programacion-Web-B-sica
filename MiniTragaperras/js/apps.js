@@ -1,97 +1,68 @@
-(function(){
-  'use strict';
+angular.module("slotApp", [])
+.controller("SlotController", function ($scope, $timeout) {
 
-  angular.module('slotApp', [])
-    .controller('SlotController', ['$timeout', function($timeout){
+    const simbolos = [
+        "img/simbolos/cereza.jpg",
+        "img/simbolos/limon.jpg",
+        "img/simbolos/sandia.jpg"
+    ];
 
-      var vm = this;
+    // Valores iniciales
+    $scope.carretes = [
+        { img: simbolos[0] },
+        { img: simbolos[1] },
+        { img: simbolos[2] }
+    ];
 
-      // SOLO tus 3 símbolos
-      vm.simbolos = [
-        'img/cereza.png',
-        'img/limon.png',
-        'img/sandia.png'
-      ];
+    $scope.stats = {
+        ganadas: 0,
+        casi: 0,
+        perdidas: 0
+    };
 
-      vm.carretes = [
-        { img: vm.simbolos[0], alt: 'Cereza' },
-        { img: vm.simbolos[1], alt: 'Limón' },
-        { img: vm.simbolos[2], alt: 'Sandía' }
-      ];
+    $scope.resultado = "";
+    $scope.colorResultado = "";
 
-      vm.stats = { ganadas: 0, casi: 0, perdidas: 0 };
-      vm.resultado = '';
-      vm.colorResultado = '';
-      vm.spinning = false;
+    // FUNCIÓN DE GIRAR
+    $scope.girar = function () {
 
-      function nombreSimbolo(ruta) {
-        var s = ruta.split('/').pop();
-        var name = s.split('.')[0];
-        return name.charAt(0).toUpperCase() + name.slice(1);
-      }
+        // Deshabilitar para evitar doble clic
+        $scope.spinning = true;
 
-      vm.girar = function() {
-        if (vm.spinning) return;
-        vm.spinning = true;
-        vm.resultado = 'Girando...';
-        vm.colorResultado = '';
+        $timeout(() => {
 
-        var delays = [800, 1100, 1400];
+            // Generar 3 símbolos aleatorios
+            $scope.carretes = [
+                { img: simbolos[Math.floor(Math.random() * simbolos.length)] },
+                { img: simbolos[Math.floor(Math.random() * simbolos.length)] },
+                { img: simbolos[Math.floor(Math.random() * simbolos.length)] }
+            ];
 
-        var animInterval = 80;
-        var animHandles = [];
+            const c0 = $scope.carretes[0].img;
+            const c1 = $scope.carretes[1].img;
+            const c2 = $scope.carretes[2].img;
 
-        vm.carretes.forEach(function(_, idx){
-          var handle = setInterval(function(){
-            var rand = vm.simbolos[Math.floor(Math.random() * vm.simbolos.length)];
-            vm.carretes[idx].img = rand;
-            vm.carretes[idx].alt = nombreSimbolo(rand);
-            $timeout(function(){}, 0);
-          }, animInterval);
-          animHandles.push(handle);
-        });
+            // Evaluar resultado
+            if (c0 === c1 && c1 === c2) {
+                $scope.resultado = "GANASTE 🎉";
+                $scope.colorResultado = "success";
+                $scope.stats.ganadas++;
 
-        for (let i = 0; i < vm.carretes.length; i++) {
-          (function(i){
-            $timeout(function(){
-              clearInterval(animHandles[i]);
+            } else if (c0 === c1 || c1 === c2 || c0 === c2) {
+                $scope.resultado = "CASI 😅";
+                $scope.colorResultado = "warning";
+                $scope.stats.casi++;
 
-              var final = vm.simbolos[Math.floor(Math.random() * vm.simbolos.length)];
-              vm.carretes[i].img = final;
-              vm.carretes[i].alt = nombreSimbolo(final);
+            } else {
+                $scope.resultado = "PERDISTE 💀";
+                $scope.colorResultado = "error";
+                $scope.stats.perdidas++;
+            }
 
-              if (i === vm.carretes.length - 1) {
-                $timeout(function(){
-                  evaluarResultado();
-                  vm.spinning = false;
-                }, 100);
-              }
-            }, delays[i]);
-          })(i);
-        }
-      };
+            $scope.spinning = false;
 
-      function evaluarResultado() {
-        var a = vm.carretes[0].img;
-        var b = vm.carretes[1].img;
-        var c = vm.carretes[2].img;
+        }, 300); // pequeño retraso opcional
+    };
 
-        if (a === b && b === c) {
-          vm.resultado = 'GANASTE 🍒🍒🍒';
-          vm.colorResultado = 'success';
-          vm.stats.ganadas++;
-        }
-        else if (a === b || a === c || b === c) {
-          vm.resultado = 'CASI 😮';
-          vm.colorResultado = 'warning';
-          vm.stats.casi++;
-        }
-        else {
-          vm.resultado = 'PERDISTE 💀';
-          vm.colorResultado = 'error';
-          vm.stats.perdidas++;
-        }
-      }
+});
 
-    }]);
-})();
