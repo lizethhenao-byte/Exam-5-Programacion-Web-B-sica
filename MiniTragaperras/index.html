@@ -2,34 +2,41 @@
 <html lang="es" ng-app="slotApp">
 <head>
     <meta charset="UTF-8">
-    <title>Mini TragaPerras</title>
+    <title>Mini Tragamonedas</title>
 
-    <link rel="stylesheet" href="css/estilos.css">
+    <!-- Estilos -->
+    <link rel="stylesheet" href="casino/estilos.css">
 
-    <script src="js/angular.min.js"></script>
+    <!-- AngularJS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+
+    <!-- Lógica -->
     <script src="js/app.js"></script>
 </head>
 
 <body ng-controller="SlotController as s">
-    
-    <h1>🎰 Mini TragaPerras</h1>
 
-    <!-- Carretes -->
+    <h1 class="encabezado">🎰 Mini Tragamonedas</h1>
+
+    <!-- TABLERO -->
     <div class="slot-container">
         <div class="slot" ng-repeat="carrete in s.carretes">
-            <img ng-src="{{carrete.img}}">
+            <img ng-src="{{carrete.img}}" class="simbolo">
         </div>
     </div>
 
-    <!-- Botón -->
-    <button class="btn-play" ng-click="s.girar()">
-        🎲 Jugar
-    </button>
+    <!-- BOTÓN DE GIRAR COMO IMAGEN -->
+    <div class="boton-giro">
+        <img src="img/iconos/boton.png"
+             alt="Girar"
+             class="btn-play-img"
+             ng-click="s.girar()">
+    </div>
 
-    <!-- Resultado -->
-    <h2 ng-class="s.colorResultado">{{s.resultado}}</h2>
+    <!-- RESULTADO -->
+    <h2 ng-class="s.colorResultado" class="resultado">{{s.resultado}}</h2>
 
-    <!-- Tabla de estadísticas -->
+    <!-- ESTADÍSTICAS -->
     <table class="stats-table">
         <tr><th>Ganadas (3 iguales)</th><td>{{s.stats.ganadas}}</td></tr>
         <tr><th>Casi (2 iguales)</th><td>{{s.stats.casi}}</td></tr>
@@ -38,4 +45,3 @@
 
 </body>
 </html>
-
