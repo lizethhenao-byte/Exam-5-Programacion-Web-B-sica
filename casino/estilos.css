@@ -6,6 +6,12 @@ body {
     padding-top: 40px;
 }
 
+.encabezado {
+    font-size: 35px;
+    text-shadow: 0 0 10px #000;
+    margin-bottom: 20px;
+}
+
 .slot-container {
     display: flex;
     justify-content: center;
@@ -30,37 +36,40 @@ body {
     height: 80px;
 }
 
-.btn-play {
-    background: orange;
-    padding: 12px 25px;
-    border: none;
-    border-radius: 12px;
-    font-size: 20px;
-    cursor: pointer;
-    color: #000;
-    margin-bottom: 20px;
+.boton-giro {
+    margin: 25px 0;
 }
+
+.btn-play-img {
+    width: 140px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.btn-play-img:hover {
+    transform: scale(1.15);
+}
+
+.resultado {
+    margin-top: 15px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.success { color: #00ff88; }
+.warning { color: #ffcc00; }
+.error   { color: #ff4444; }
 
 .stats-table {
     width: 300px;
-    margin: 0 auto;
+    margin: 25px auto;
     background: #ffffff11;
     padding: 15px;
     border-radius: 10px;
+    font-size: 18px;
 }
 
 .stats-table th, td {
     padding: 8px;
 }
 
-.success {
-    color: #00ff88;
-}
-
-.warning {
-    color: #ffcc00;
-}
-
-.error {
-    color: #ff4444;
-}
