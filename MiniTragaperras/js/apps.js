@@ -7,13 +7,14 @@ angular.module("slotApp", [])
         "img/simbolos/sandia.jpg"
     ];
 
-    // Valores iniciales
+    // Inicializar carretes
     $scope.carretes = [
         { img: simbolos[0] },
         { img: simbolos[1] },
         { img: simbolos[2] }
     ];
 
+    // Estadísticas
     $scope.stats = {
         ganadas: 0,
         casi: 0,
@@ -23,15 +24,12 @@ angular.module("slotApp", [])
     $scope.resultado = "";
     $scope.colorResultado = "";
 
-    // FUNCIÓN DE GIRAR
     $scope.girar = function () {
 
-        // Deshabilitar para evitar doble clic
-        $scope.spinning = true;
-
+        // animación/retraso
         $timeout(() => {
 
-            // Generar 3 símbolos aleatorios
+            // generar 3 símbolos aleatorios
             $scope.carretes = [
                 { img: simbolos[Math.floor(Math.random() * simbolos.length)] },
                 { img: simbolos[Math.floor(Math.random() * simbolos.length)] },
@@ -42,27 +40,24 @@ angular.module("slotApp", [])
             const c1 = $scope.carretes[1].img;
             const c2 = $scope.carretes[2].img;
 
-            // Evaluar resultado
+            // evaluar combinación
             if (c0 === c1 && c1 === c2) {
                 $scope.resultado = "GANASTE 🎉";
                 $scope.colorResultado = "success";
                 $scope.stats.ganadas++;
-
-            } else if (c0 === c1 || c1 === c2 || c0 === c2) {
+            }
+            else if (c0 === c1 || c1 === c2 || c0 === c2) {
                 $scope.resultado = "CASI 😅";
                 $scope.colorResultado = "warning";
                 $scope.stats.casi++;
-
-            } else {
+            }
+            else {
                 $scope.resultado = "PERDISTE 💀";
                 $scope.colorResultado = "error";
                 $scope.stats.perdidas++;
             }
 
-            $scope.spinning = false;
-
-        }, 300); // pequeño retraso opcional
+        }, 300);
     };
 
 });
-
