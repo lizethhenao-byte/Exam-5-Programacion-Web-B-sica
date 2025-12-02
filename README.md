@@ -17,13 +17,16 @@ Este mini juego simula una máquina de tragaperras usando **HTML + CSS + Angular
 ✔ Código organizado en carpetas (HTML, JS, CSS e Imágenes)
 
 Estructura del proyecto
+
 MiniTragaperras/
 │── index.html
 │
 ├── img/
-│   ├── cereza.jpg
-│   ├── limon.jpg
-│   └── sandia.j
+│   ├── simbolos/
+│   │     ├── cereza.jpg
+│   │     ├── limon.jpg
+│   │     └── sandia.jpg
+│   │
 │   └── iconos/
 │         └── boton.png   ← ESTE ES EL BOTÓN DE GIRO
 │
