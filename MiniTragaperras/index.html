@@ -1,49 +1,50 @@
 <!DOCTYPE html>
-<html lang="es" ng-app="slotApp">
+<html lang="es" ng-app="tragamonedasApp">
 <head>
     <meta charset="UTF-8">
-    <title>Mini Tragamonedas</title>
-
-    <!-- Estilos -->
-    <link rel="stylesheet" href="casino/estilos.css">
+    <title>MiniTragamonedas</title>
 
     <!-- AngularJS -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
 
-    <!-- Lógica -->
+    <!-- Controlador -->
     <script src="js/app.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="casino/estilos.css">
 </head>
 
-<body ng-controller="SlotController">
+<body ng-controller="tragamonedasCtrl">
 
-    <h1 class="encabezado">🎰 Mini Tragamonedas</h1>
+    <h1 class="titulo">MiniTragamonedas</h1>
 
     <!-- TABLERO -->
-    <div class="slot-container">
-        <div class="slot" ng-repeat="carrete in carretes">
-            <img ng-src="{{carrete.img}}" class="simbolo">
+    <div class="tablero">
+        <div class="reels">
+            <div class="reel-box"><img ng-src="{{reel1}}"></div>
+            <div class="reel-box"><img ng-src="{{reel2}}"></div>
+            <div class="reel-box"><img ng-src="{{reel3}}"></div>
         </div>
     </div>
 
-    <!-- BOTÓN DE GIRAR -->
-    <div class="boton-giro">
-        <img src="img/iconos/boton.png"
-             alt="Girar"
-             class="btn-play-img"
-             ng-click="girar()">
-    </div>
+    <!-- BOTÓN DE GIRO -->
+    <button class="btn-girar" ng-click="girar()">
+        <img src="img/iconos/boton.png" class="icono-boton">
+    </button>
 
-    <!-- RESULTADO -->
-    <h2 ng-class="colorResultado" class="resultado">
-        {{resultado}}
+    <!-- MENSAJE -->
+    <h2 class="resultado" ng-style="{'color': colorMensaje}">
+        {{mensaje}}
     </h2>
 
     <!-- ESTADÍSTICAS -->
-    <table class="stats-table">
-        <tr><th>Ganadas (3 iguales)</th><td>{{stats.ganadas}}</td></tr>
-        <tr><th>Casi (2 iguales)</th><td>{{stats.casi}}</td></tr>
-        <tr><th>Perdidas</th><td>{{stats.perdidas}}</td></tr>
+    <table class="tabla-estadisticas">
+        <tr><th>Resultado</th><th>Cantidad</th></tr>
+        <tr><td>Ganaste</td><td>{{ganadas}}</td></tr>
+        <tr><td>Casi</td><td>{{casi}}</td></tr>
+        <tr><td>Perdiste</td><td>{{perdidas}}</td></tr>
     </table>
 
 </body>
 </html>
+
