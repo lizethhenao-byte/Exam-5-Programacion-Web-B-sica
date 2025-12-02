@@ -1,63 +1,50 @@
-angular.module("slotApp", [])
-.controller("SlotController", function ($scope, $timeout) {
+var app = angular.module("tragamonedasApp", []);
 
-    const simbolos = [
+app.controller("tragamonedasCtrl", function($scope, $timeout) {
+
+    // Símbolos
+    $scope.simbolos = [
         "img/simbolos/cereza.jpg",
         "img/simbolos/limon.jpg",
         "img/simbolos/sandia.jpg"
     ];
 
-    // Inicializar carretes
-    $scope.carretes = [
-        { img: simbolos[0] },
-        { img: simbolos[1] },
-        { img: simbolos[2] }
-    ];
+    // Carretes iniciales
+    $scope.reel1 = $scope.simbolos[0];
+    $scope.reel2 = $scope.simbolos[1];
+    $scope.reel3 = $scope.simbolos[2];
 
-    // Estadísticas
-    $scope.stats = {
-        ganadas: 0,
-        casi: 0,
-        perdidas: 0
+    // Contadores
+    $scope.ganadas = 0;
+    $scope.casi = 0;
+    $scope.perdidas = 0;
+
+    $scope.mensaje = "";
+    $scope.colorMensaje = "white";
+
+    // Función girar
+    $scope.girar = function() {
+
+        let r1 = Math.floor(Math.random() * $scope.simbolos.length);
+        let r2 = Math.floor(Math.random() * $scope.simbolos.length);
+        let r3 = Math.floor(Math.random() * $scope.simbolos.length);
+
+        $scope.reel1 = $scope.simbolos[r1];
+        $scope.reel2 = $scope.simbolos[r2];
+        $scope.reel3 = $scope.simbolos[r3];
+
+        if (r1 === r2 && r2 === r3) {
+            $scope.mensaje = "🎉 GANASTE 🎉";
+            $scope.colorMensaje = "lime";
+            $scope.ganadas++;
+        } else if (r1 === r2 || r1 === r3 || r2 === r3) {
+            $scope.mensaje = "😬 CASI 😬";
+            $scope.colorMensaje = "yellow";
+            $scope.casi++;
+        } else {
+            $scope.mensaje = "❌ PERDISTE ❌";
+            $scope.colorMensaje = "red";
+            $scope.perdidas++;
+        }
     };
-
-    $scope.resultado = "";
-    $scope.colorResultado = "";
-
-    $scope.girar = function () {
-
-        // animación/retraso
-        $timeout(() => {
-
-            // generar 3 símbolos aleatorios
-            $scope.carretes = [
-                { img: simbolos[Math.floor(Math.random() * simbolos.length)] },
-                { img: simbolos[Math.floor(Math.random() * simbolos.length)] },
-                { img: simbolos[Math.floor(Math.random() * simbolos.length)] }
-            ];
-
-            const c0 = $scope.carretes[0].img;
-            const c1 = $scope.carretes[1].img;
-            const c2 = $scope.carretes[2].img;
-
-            // evaluar combinación
-            if (c0 === c1 && c1 === c2) {
-                $scope.resultado = "GANASTE 🎉";
-                $scope.colorResultado = "success";
-                $scope.stats.ganadas++;
-            }
-            else if (c0 === c1 || c1 === c2 || c0 === c2) {
-                $scope.resultado = "CASI 😅";
-                $scope.colorResultado = "warning";
-                $scope.stats.casi++;
-            }
-            else {
-                $scope.resultado = "PERDISTE 💀";
-                $scope.colorResultado = "error";
-                $scope.stats.perdidas++;
-            }
-
-        }, 300);
-    };
-
 });
