@@ -1,77 +1,83 @@
 body {
-    background: #00224e;
-    color: white;
-    font-family: Arial, sans-serif;
     text-align: center;
-    padding-top: 40px;
+    background: #000;
+    color: white;
+    font-family: Arial;
 }
 
-.encabezado {
-    font-size: 35px;
-    text-shadow: 0 0 10px #000;
-    margin-bottom: 20px;
+.titulo {
+    margin-top: 20px;
+    font-size: 40px;
+    font-weight: bold;
 }
 
-.slot-container {
+.tablero {
+    margin: auto;
+    margin-top: 30px;
+    padding: 25px;
+    width: 500px;
+    background: #111;
+    border: 3px solid gold;
+    border-radius: 20px;
+}
+
+.reels {
     display: flex;
     justify-content: center;
-    gap: 25px;
-    margin: 30px auto;
 }
 
-.slot {
+.reel-box {
+    width: 160px;
+    height: 160px;
+    margin: 10px;
+    border: 3px solid white;
+    border-radius: 15px;
+    background: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.reel-box img {
     width: 120px;
     height: 120px;
-    background: #ffffff22;
-    border: 3px solid #ffaa00;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 0 10px #000;
 }
 
-.slot img {
-    width: 80px;
-    height: 80px;
-}
-
-.boton-giro {
-    margin: 25px 0;
-}
-
-.btn-play-img {
-    width: 140px;
+/* BOTÓN */
+.btn-girar {
+    margin-top: 20px;
+    background: none;
+    border: none;
     cursor: pointer;
-    transition: transform 0.2s ease;
 }
 
-.btn-play-img:hover {
-    transform: scale(1.15);
+.icono-boton {
+    width: 120px;
+    height: 120px;
+    transition: transform 0.2s;
+}
+
+.icono-boton:hover {
+    transform: scale(1.1);
+}
+
+/* TABLA */
+.tabla-estadisticas {
+    margin: 25px auto;
+    width: 350px;
+    background: #222;
+    border-collapse: collapse;
+}
+
+.tabla-estadisticas th, .tabla-estadisticas td {
+    padding: 10px;
+    border: 1px solid #555;
 }
 
 .resultado {
     margin-top: 15px;
-    font-size: 28px;
+    font-size: 30px;
     font-weight: bold;
 }
 
-.success { color: #00ff88; }
-.warning { color: #ffcc00; }
-.error   { color: #ff4444; }
-
-.stats-table {
-    width: 300px;
-    margin: 25px auto;
-    background: #ffffff11;
-    padding: 15px;
-    border-radius: 10px;
-    font-size: 18px;
-}
-
-.stats-table th, td {
-    padding: 8px;
-}
-
-}
 
